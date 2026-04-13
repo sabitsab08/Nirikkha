@@ -1,0 +1,552 @@
+<!DOCTYPE html>
+<html class="light" lang="en">
+<head>
+  <meta charset="utf-8"/>
+  <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+  <title>Nirikkha - Admin Dashboard</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet"/>
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="CSS/admin-style.css"/>
+</head>
+<body>
+
+<div id="toast-container" class="toast-container"></div>
+
+<nav class="topnav">
+  <div class="topnav-inner">
+    <div class="topnav-left">
+      <button id="hamburger-btn" onclick="toggleSidebar()" aria-label="Toggle menu">
+        <span class="material-symbols-outlined">menu</span>
+      </button>
+      <span class="brand-name">Nirikkha</span>
+      <div class="search-bar">
+        <span class="material-symbols-outlined" style="font-size:0.875rem;color:#64748b">search</span>
+        <input placeholder="Search settings..." type="text"/>
+      </div>
+    </div>
+    <div class="topnav-right">
+      <button class="icon-btn"><span class="material-symbols-outlined">notifications</span></button>
+      <button class="settings-btn"><span class="material-symbols-outlined">settings</span></button>
+      <div class="avatar">
+        <img alt="Admin" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAvx9xYpV0dFFOzsPh3b9l5c4bmDkvXqbiL22O14pZNDSEgBpZG8Z5JaGe2fRxUMphBIINcikgjRcjo5orhWwuRw3NIVTDXZkYXTLKj5iVlulNM-UcJEwIoU4IjKUfWZ7rw41sTHOHNuXRTzacZWpoxcWkZQ2egHcrpaTQ0Hm8PsSLKNQVuFYzSKdg6GoVI_w4OG97vnZgvLY90J9-iGwK9Rs0kU2NiDC8D9Ig3bB6f_OtFbXmuT08fkLLBgEJYZgGMobbq9KaJG40"/>
+      </div>
+    </div>
+  </div>
+  <div class="topnav-divider"></div>
+</nav>
+
+<div id="sidebar-overlay" onclick="toggleSidebar()"></div>
+
+<aside id="sidebar">
+  <div class="sidebar-brand">
+    <div class="sidebar-brand-icon"><span class="material-symbols-outlined">school</span></div>
+    <div>
+      <h2 class="sidebar-brand-title">Admin Panel</h2>
+      <p class="sidebar-brand-sub">System Control</p>
+    </div>
+  </div>
+  <nav class="sidebar-nav" id="main-nav">
+    <button class="nav-link" data-section="academic-years" onclick="showSection('academic-years');closeSidebar();">
+      <span class="material-symbols-outlined">calendar_today</span><span>Academic Years</span>
+    </button>
+    <button class="nav-link" data-section="user-roles" onclick="showSection('user-roles');closeSidebar();">
+      <span class="material-symbols-outlined">group</span><span>User Roles</span>
+    </button>
+    <button class="nav-link" data-section="add-teacher" onclick="showSection('add-teacher');closeSidebar();">
+      <span class="material-symbols-outlined">person_add</span><span>Add Teacher</span>
+    </button>
+    <button class="nav-link" data-section="add-student" onclick="showSection('add-student');closeSidebar();">
+      <span class="material-symbols-outlined">group_add</span><span>Add Student</span>
+    </button>
+  </nav>
+  <div class="sidebar-footer">
+    <a href="#"><span class="material-symbols-outlined">help</span><span>Support</span></a>
+    <a class="logout" href="#"><span class="material-symbols-outlined">logout</span><span>Logout</span></a>
+  </div>
+</aside>
+
+<main id="main-content">
+  <div class="content-wrap">
+    <div id="content-area">
+
+      <!-- ACADEMIC YEARS -->
+      <section class="dashboard-section hidden" id="section-academic-years">
+        <div class="section-header">
+          <h2 class="section-title">Academic Years</h2>
+          <button class="btn btn-primary" style="padding:0.5rem 1rem;font-size:0.875rem;">+ New Session</button>
+        </div>
+        <div class="card">
+          <p style="color:var(--on-surface-variant)">Manage and configure academic sessions and terms for the institution.</p>
+          <div class="card-grid">
+            <div class="mini-card">
+              <div class="mini-card-header">
+                <span class="badge-active">Active</span>
+                <span class="material-symbols-outlined" style="color:#94a3b8">more_vert</span>
+              </div>
+              <h4 style="font-weight:700">2023-2024 Session</h4>
+              <p style="font-size:0.75rem;color:#64748b">Current ongoing academic year</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- USER ROLES -->
+      <section class="dashboard-section hidden" id="section-user-roles">
+        <h2 class="section-title" style="margin-bottom:1.5rem">User Roles &amp; Permissions</h2>
+        <div class="card">
+          <div class="access-control-header">
+            <div class="access-control-icon"><span class="material-symbols-outlined">security</span></div>
+            <div>
+              <h3 style="font-weight:700;font-size:1.125rem">Access Control</h3>
+              <p style="font-size:0.875rem;color:var(--on-surface-variant)">Configure what different user levels can see and do.</p>
+            </div>
+          </div>
+          <div class="overflow-x-auto">
+            <table>
+              <thead>
+                <tr><th>Role Name</th><th>Description</th><th>User Count</th><th>Actions</th></tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td style="font-weight:600">Administrator</td>
+                  <td style="color:#475569">Full system access</td>
+                  <td>3</td>
+                  <td style="color:var(--primary);font-weight:500;cursor:pointer">Edit</td>
+                </tr>
+                <tr>
+                  <td style="font-weight:600">Teacher</td>
+                  <td style="color:#475569">Class management &amp; grading</td>
+                  <td>42</td>
+                  <td style="color:var(--primary);font-weight:500;cursor:pointer">Edit</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </section>
+
+      <!-- ADD TEACHER -->
+      <section class="dashboard-section hidden" id="section-add-teacher">
+        <div class="form-panel">
+          <div class="form-panel-header">
+            <div class="form-panel-icon tertiary">
+              <span class="material-symbols-outlined" style="font-size:1.25rem">person_add</span>
+            </div>
+            <div>
+              <h3 style="font-size:1.125rem;font-weight:700;color:var(--on-surface)">Add New Teacher</h3>
+              <p style="font-size:0.75rem;color:var(--on-surface-variant)">Register faculty members individually or via bulk file upload.</p>
+            </div>
+          </div>
+          <div class="form-panel-body">
+
+            <div class="bulk-card tertiary">
+              <div class="bulk-card-header">
+                <div>
+                  <h4 style="font-size:0.875rem;font-weight:700;color:var(--tertiary);display:flex;align-items:center;gap:0.5rem">
+                    <span class="material-symbols-outlined" style="font-size:1.125rem">upload_file</span>Bulk Enrollment via CSV
+                  </h4>
+                  <p style="font-size:11px;color:var(--on-surface-variant)">Quickly import multiple faculty records at once.</p>
+                </div>
+                <a href="#" style="display:flex;align-items:center;gap:0.25rem;color:var(--tertiary);font-weight:700;font-size:11px;text-decoration:none">
+                  <span class="material-symbols-outlined" style="font-size:0.75rem">download</span>Download CSV Template
+                </a>
+              </div>
+              <div class="bulk-card-grid">
+                <div>
+                  <div class="upload-area tertiary" onclick="document.getElementById('teacher-csv-upload').click()">
+                    <input class="hidden" id="teacher-csv-upload" type="file"/>
+                    <label style="display:flex;flex-direction:column;align-items:center;cursor:pointer">
+                      <span class="material-symbols-outlined upload-area-icon tertiary">cloud_upload</span>
+                      <p style="font-size:11px;font-weight:600;color:var(--on-surface)">Upload CSV File</p>
+                      <p style="font-size:9px;color:var(--on-surface-variant);margin-top:0.125rem">Drag &amp; drop or click to browse</p>
+                    </label>
+                  </div>
+                </div>
+                <div class="upload-btn-wrap">
+                  <button class="btn btn-tertiary" style="width:100%;height:2.5rem;font-size:0.75rem">
+                    <span class="material-symbols-outlined" style="font-size:0.875rem">sync</span>Upload and Process
+                  </button>
+                </div>
+              </div>
+            </div>
+
+            <div class="or-divider">
+              <div class="or-divider-line"><div></div></div>
+              <div class="or-divider-text"><span>Or Add Manually</span></div>
+            </div>
+
+            <div class="manual-form-wrap">
+              <div class="manual-form-header">
+                <h4 style="font-size:0.875rem;font-weight:700;color:var(--on-surface)">Manual Registration</h4>
+                <p style="font-size:10px;color:#ef4444;font-style:italic">* Required fields</p>
+              </div>
+              <form id="add-teacher-form" novalidate class="manual-form-grid">
+
+                <!-- LEFT COLUMN -->
+                <div class="form-col">
+                  <label>
+                    <span class="lbl">Full Name <span class="req-star">*</span></span>
+                    <input id="teacher-name" placeholder="e.g. Dr. Jane Smith" type="text"/>
+                    <span class="field-error" id="err-teacher-name">Full name is required.</span>
+                  </label>
+                  <label>
+                    <span class="lbl">Email Address <span class="opt-badge">Optional</span></span>
+                    <input id="teacher-email" placeholder="j.smith@school.edu" type="email"/>
+                    <span class="field-error" id="err-teacher-email">Invalid email format.</span>
+                  </label>
+                  <label>
+                    <span class="lbl">Staff ID <span class="req-star">*</span></span>
+                    <input id="teacher-staffid" placeholder="TCH-2024-001" type="text"/>
+                    <span class="field-error" id="err-teacher-staffid">Staff ID is required.</span>
+                  </label>
+                  <label>
+                    <span class="lbl">Gender <span class="req-star">*</span></span>
+                    <select id="teacher-gender">
+                      <option value="">Select Gender</option>
+                      <option>Male</option>
+                      <option>Female</option>
+                      <option>Other</option>
+                    </select>
+                    <span class="field-error" id="err-teacher-gender">Please select a gender.</span>
+                  </label>
+                  <label>
+                    <span class="lbl">Phone Number <span class="opt-badge">Optional</span></span>
+                    <input id="teacher-phone" placeholder="+880 1XXX-XXXXXX" type="tel"/>
+                  </label>
+                  <div>
+                    <span class="lbl">Shift <span class="req-star">*</span></span>
+                    <div class="toggle-group" id="shift-group">
+                      <button type="button" class="toggle-btn" data-val="Morning" onclick="selectToggle('shift-group','Morning','teacher-shift')">
+                        <span class="material-symbols-outlined" style="font-size:15px">wb_sunny</span> Morning
+                      </button>
+                      <button type="button" class="toggle-btn" data-val="Day" onclick="selectToggle('shift-group','Day','teacher-shift')">
+                        <span class="material-symbols-outlined" style="font-size:15px">light_mode</span> Day
+                      </button>
+                    </div>
+                    <input type="hidden" id="teacher-shift" value=""/>
+                    <span class="field-error" id="err-teacher-shift">Please select a shift.</span>
+                  </div>
+                  <div>
+                    <span class="lbl">Working Days <span class="req-star">*</span></span>
+                    <div class="toggle-group" id="daytype-group">
+                      <button type="button" class="toggle-btn" data-val="Weekday" onclick="selectToggle('daytype-group','Weekday','teacher-daytype')">
+                        <span class="material-symbols-outlined" style="font-size:15px">work</span> Weekday
+                      </button>
+                      <button type="button" class="toggle-btn" data-val="Weekend" onclick="selectToggle('daytype-group','Weekend','teacher-daytype')">
+                        <span class="material-symbols-outlined" style="font-size:15px">weekend</span> Weekend
+                      </button>
+                      <button type="button" class="toggle-btn" data-val="Both" onclick="selectToggle('daytype-group','Both','teacher-daytype')">
+                        <span class="material-symbols-outlined" style="font-size:15px">date_range</span> Both
+                      </button>
+                    </div>
+                    <input type="hidden" id="teacher-daytype" value=""/>
+                    <span class="field-error" id="err-teacher-daytype">Please select working days.</span>
+                  </div>
+                </div>
+
+                <!-- RIGHT COLUMN -->
+                <div class="form-col">
+                  <div>
+                    <span class="lbl">Assigned Classes <span class="req-star">*</span></span>
+                    <div class="multi-select-wrapper" id="ms-classes">
+                      <div class="multi-select-trigger">
+                        <div class="selected-tags"><span style="font-size:0.875rem;color:#94a3b8">Select classes...</span></div>
+                        <span class="material-symbols-outlined chevron-icon">expand_more</span>
+                      </div>
+                      <div class="hidden multi-select-dropdown">
+                        <div class="multi-select-dropdown-header">
+                          <span class="selection-count">0 Selected</span>
+                          <button class="clear-all" type="button">Clear all</button>
+                        </div>
+                        <div class="multi-select-options">
+                          <label class="multi-select-option"><input type="checkbox" value="Class 6"/><span>Class 6</span></label>
+                          <label class="multi-select-option"><input type="checkbox" value="Class 7"/><span>Class 7</span></label>
+                          <label class="multi-select-option"><input type="checkbox" value="Class 8"/><span>Class 8</span></label>
+                          <label class="multi-select-option"><input type="checkbox" value="Class 9"/><span>Class 9</span></label>
+                          <label class="multi-select-option"><input type="checkbox" value="Class 10"/><span>Class 10</span></label>
+                        </div>
+                      </div>
+                    </div>
+                    <span class="field-error" id="err-teacher-classes">Please select at least one class.</span>
+                  </div>
+                  <div>
+                    <span class="lbl">Assigned Sections <span class="req-star">*</span></span>
+                    <div class="multi-select-wrapper" id="ms-sections">
+                      <div class="multi-select-trigger">
+                        <div class="selected-tags"><span style="font-size:0.875rem;color:#94a3b8">Select sections...</span></div>
+                        <span class="material-symbols-outlined chevron-icon">expand_more</span>
+                      </div>
+                      <div class="hidden multi-select-dropdown">
+                        <div class="multi-select-dropdown-header">
+                          <span class="selection-count">0 Selected</span>
+                          <button class="clear-all" type="button">Clear all</button>
+                        </div>
+                        <div class="multi-select-options" style="min-height:130px">
+                          <label class="multi-select-option"><input type="checkbox" value="A"/><span>Section A</span></label>
+                          <label class="multi-select-option"><input type="checkbox" value="B"/><span>Section B</span></label>
+                          <label class="multi-select-option"><input type="checkbox" value="C"/><span>Section C</span></label>
+                          <label class="multi-select-option"><input type="checkbox" value="D"/><span>Section D</span></label>
+                        </div>
+                      </div>
+                    </div>
+                    <span class="field-error" id="err-teacher-sections">Please select at least one section.</span>
+                  </div>
+                  <div>
+                    <span class="lbl">Department <span class="req-star">*</span></span>
+                    <div class="multi-select-wrapper" id="ms-department">
+                      <div class="multi-select-trigger">
+                        <div class="selected-tags"><span style="font-size:0.875rem;color:#94a3b8">Select department...</span></div>
+                        <span class="material-symbols-outlined chevron-icon">expand_more</span>
+                      </div>
+                      <div class="hidden multi-select-dropdown">
+                        <div class="multi-select-dropdown-header">
+                          <span class="selection-count">0 Selected</span>
+                          <button class="clear-all" type="button">Clear all</button>
+                        </div>
+                        <div class="multi-select-options" style="min-height:130px">
+                          <label class="multi-select-option"><input type="checkbox" value="General"/><span>General</span></label>
+                          <label class="multi-select-option"><input type="checkbox" value="Science"/><span>Science</span></label>
+                          <label class="multi-select-option"><input type="checkbox" value="Business Studies"/><span>Business Studies</span></label>
+                          <label class="multi-select-option"><input type="checkbox" value="Humanities"/><span>Humanities</span></label>
+                        </div>
+                      </div>
+                    </div>
+                    <span class="field-error" id="err-teacher-department">Please select a department.</span>
+                  </div>
+                  <div>
+                    <span class="lbl">Assigned Subjects <span class="req-star">*</span></span>
+                    <div class="subject-autocomplete-wrap">
+                      <input type="text" id="subject-search-input" placeholder="Type subject name to search..." autocomplete="off"/>
+                      <div class="subject-dropdown" id="subject-dropdown"></div>
+                    </div>
+                    <div class="subject-tags" id="subject-tags"></div>
+                    <span class="field-error" id="err-teacher-subjects">Please add at least one subject.</span>
+                    <input type="hidden" id="assigned-subjects-hidden" value="[]"/>
+                  </div>
+                  <label>
+                    <span class="lbl">Password <span class="req-star">*</span></span>
+                    <div class="pw-wrap">
+                      <input id="teacher-password" placeholder="Set login password" type="password"/>
+                      <button type="button" class="pw-toggle" onclick="togglePassword('teacher-password',this)" tabindex="-1">
+                        <span class="material-symbols-outlined" style="font-size:18px">visibility</span>
+                      </button>
+                    </div>
+                    <span class="field-error" id="err-teacher-password">Password is required.</span>
+                  </label>
+                  <label>
+                    <span class="lbl">Confirm Password <span class="req-star">*</span></span>
+                    <div class="pw-wrap">
+                      <input id="teacher-confirm-password" placeholder="Re-enter password" type="password"/>
+                      <button type="button" class="pw-toggle" onclick="togglePassword('teacher-confirm-password',this)" tabindex="-1">
+                        <span class="material-symbols-outlined" style="font-size:18px">visibility</span>
+                      </button>
+                    </div>
+                    <span class="field-error" id="err-teacher-confirm-password">Passwords do not match.</span>
+                  </label>
+                  <label>
+                    <span class="lbl">Profile Photo <span class="opt-badge">Optional</span></span>
+                    <input class="hidden" id="teacher-photo" type="file" accept="image/*"/>
+                    <button type="button" class="photo-btn" onclick="document.getElementById('teacher-photo').click()">
+                      <span class="material-symbols-outlined" style="font-size:0.875rem">photo_camera</span><span>Choose Photo</span>
+                    </button>
+                    <div id="teacher-photo-name" class="photo-name"></div>
+                  </label>
+                </div>
+
+                <div style="grid-column:1/-1" class="form-action-row">
+                  <button type="button" onclick="generateTeacherPDF()" class="btn btn-secondary">
+                    <span class="material-symbols-outlined" style="font-size:0.875rem">download</span>Download Registration PDF
+                  </button>
+                  <button class="btn btn-tertiary" id="teacher-submit-btn" type="submit">
+                    <span id="teacher-submit-spinner" class="hidden spinner"></span>
+                    <span id="teacher-submit-text">Register Teacher</span>
+                  </button>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ADD STUDENT -->
+      <section class="dashboard-section hidden" id="section-add-student">
+        <div class="form-panel">
+          <div class="form-panel-header">
+            <div class="form-panel-icon secondary">
+              <span class="material-symbols-outlined" style="font-size:1.25rem">group_add</span>
+            </div>
+            <div>
+              <h3 style="font-size:1.125rem;font-weight:700;color:var(--on-surface)">Add New Student</h3>
+              <p style="font-size:0.75rem;color:var(--on-surface-variant)">Enroll students individually or via bulk file upload.</p>
+            </div>
+          </div>
+          <div class="form-panel-body">
+
+            <div class="bulk-card primary">
+              <div class="bulk-card-header">
+                <div>
+                  <h4 style="font-size:0.875rem;font-weight:700;color:var(--primary);display:flex;align-items:center;gap:0.5rem">
+                    <span class="material-symbols-outlined" style="font-size:1.125rem">upload_file</span>Bulk Enrollment via CSV
+                  </h4>
+                  <p style="font-size:11px;color:var(--on-surface-variant)">Quickly import multiple student records at once.</p>
+                </div>
+                <a href="#" style="display:flex;align-items:center;gap:0.25rem;color:var(--primary);font-weight:700;font-size:11px;text-decoration:none">
+                  <span class="material-symbols-outlined" style="font-size:0.75rem">download</span>Download CSV Template
+                </a>
+              </div>
+              <div class="bulk-card-grid">
+                <div>
+                  <div class="upload-area" onclick="document.getElementById('csv-upload').click()">
+                    <input class="hidden" id="csv-upload" type="file"/>
+                    <label style="display:flex;flex-direction:column;align-items:center;cursor:pointer">
+                      <span class="material-symbols-outlined upload-area-icon primary">cloud_upload</span>
+                      <p style="font-size:11px;font-weight:600;color:var(--on-surface)">Upload CSV File</p>
+                      <p style="font-size:9px;color:var(--on-surface-variant);margin-top:0.125rem">Drag &amp; drop or click to browse</p>
+                    </label>
+                  </div>
+                </div>
+                <div class="upload-btn-wrap">
+                  <button class="btn btn-primary" style="width:100%;height:2.5rem;font-size:0.75rem">
+                    <span class="material-symbols-outlined" style="font-size:0.875rem">sync</span>Upload and Process
+                  </button>
+                </div>
+              </div>
+            </div>
+
+            <div class="or-divider">
+              <div class="or-divider-line"><div></div></div>
+              <div class="or-divider-text"><span>Or Add Manually</span></div>
+            </div>
+
+            <div class="manual-form-wrap">
+              <div class="manual-form-header">
+                <h4 style="font-size:0.875rem;font-weight:700;color:var(--on-surface)">Manual Enrollment</h4>
+                <p style="font-size:10px;color:#ef4444;font-style:italic">* Required fields</p>
+              </div>
+              <form id="add-student-form" novalidate class="manual-form-grid">
+                <div class="form-col">
+                  <label>
+                    <span class="lbl">Full Name <span class="req-star">*</span></span>
+                    <input id="student-name" placeholder="e.g. Michael Chen" type="text"/>
+                    <span class="field-error" id="err-student-name">Full name is required.</span>
+                  </label>
+                  <label>
+                    <span class="lbl">Student Email <span class="opt-badge">Optional</span></span>
+                    <input id="student-email" placeholder="m.chen@student.edu" type="email"/>
+                  </label>
+                  <label>
+                    <span class="lbl">Student ID <span class="req-star">*</span></span>
+                    <input id="student-id" placeholder="100001" type="text"/>
+                    <span class="field-error" id="err-student-id">Student ID is required.</span>
+                  </label>
+                  <label>
+                    <span class="lbl">Gender <span class="req-star">*</span></span>
+                    <select id="student-gender">
+                      <option value="">Select Gender</option>
+                      <option>Male</option>
+                      <option>Female</option>
+                      <option>Other</option>
+                    </select>
+                    <span class="field-error" id="err-student-gender">Please select a gender.</span>
+                  </label>
+                  <label>
+                    <span class="lbl">Password <span class="req-star">*</span></span>
+                    <div class="pw-wrap">
+                      <input id="student-password" placeholder="Set login password" type="password"/>
+                      <button type="button" class="pw-toggle" onclick="togglePassword('student-password',this)" tabindex="-1">
+                        <span class="material-symbols-outlined" style="font-size:18px">visibility</span>
+                      </button>
+                    </div>
+                    <span class="field-error" id="err-student-password">Password is required.</span>
+                  </label>
+                </div>
+                <div class="form-col">
+                  <label>
+                    <span class="lbl">Class <span class="req-star">*</span></span>
+                    <select id="student-class">
+                      <option value="">Select Class</option>
+                      <option>Class 6</option>
+                      <option>Class 7</option>
+                      <option>Class 8</option>
+                      <option>Class 9</option>
+                      <option>Class 10</option>
+                    </select>
+                    <span class="field-error" id="err-student-class">Please select a class.</span>
+                  </label>
+                  <label>
+                    <span class="lbl">Section <span class="req-star">*</span></span>
+                    <select id="student-section">
+                      <option value="">Select Section</option>
+                      <option value="Section A">Section A</option>
+                      <option value="Section B">Section B</option>
+                      <option value="Section C">Section C</option>
+                      <option value="Section D">Section D</option>
+                    </select>
+                    <span class="field-error" id="err-student-section">Please select a section.</span>
+                  </label>
+                  <label>
+                    <span class="lbl">Roll <span class="req-star">*</span></span>
+                    <input id="student-roll" placeholder="Enter Roll Number" type="text"/>
+                    <span class="field-error" id="err-student-roll">Roll number is required.</span>
+                  </label>
+                  <label>
+                    <span class="lbl">Phone Number <span class="opt-badge">Optional</span></span>
+                    <input id="student-phone" placeholder="+880 1XXX-XXXXXX" type="tel"/>
+                  </label>
+                  <label>
+                    <span class="lbl">Confirm Password <span class="req-star">*</span></span>
+                    <div class="pw-wrap">
+                      <input id="student-confirm-password" placeholder="Re-enter password" type="password"/>
+                      <button type="button" class="pw-toggle" onclick="togglePassword('student-confirm-password',this)" tabindex="-1">
+                        <span class="material-symbols-outlined" style="font-size:18px">visibility</span>
+                      </button>
+                    </div>
+                    <span class="field-error" id="err-student-confirm-password">Passwords do not match.</span>
+                  </label>
+                  <label>
+                    <span class="lbl">Profile Photo <span class="opt-badge">Optional</span></span>
+                    <input class="hidden" id="student-photo" type="file" accept="image/*"/>
+                    <button type="button" class="photo-btn" onclick="document.getElementById('student-photo').click()">
+                      <span class="material-symbols-outlined" style="font-size:0.875rem">photo_camera</span><span>Choose Photo</span>
+                    </button>
+                    <div id="student-photo-name" class="photo-name"></div>
+                  </label>
+                </div>
+                <div style="grid-column:1/-1" class="form-action-row">
+                  <button type="button" onclick="generateStudentPDF()" class="btn btn-secondary">
+                    <span class="material-symbols-outlined" style="font-size:0.875rem">download</span>Download Enrolment PDF
+                  </button>
+                  <button class="btn btn-primary" id="submit-btn" type="submit">
+                    <span id="submit-spinner" class="hidden spinner"></span>
+                    <span id="submit-text">Enroll Student</span>
+                  </button>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </section>
+
+    </div>
+  </div>
+</main>
+
+<nav id="bottom-nav">
+  <button class="bottom-nav-item" data-section="academic-years" onclick="showSection('academic-years');closeSidebar();">
+    <span class="material-symbols-outlined">calendar_today</span><span>Years</span>
+  </button>
+  <button class="bottom-nav-item" data-section="user-roles" onclick="showSection('user-roles');closeSidebar();">
+    <span class="material-symbols-outlined">group</span><span>Roles</span>
+  </button>
+  <button class="bottom-nav-item" data-section="add-teacher" onclick="showSection('add-teacher');closeSidebar();">
+    <span class="material-symbols-outlined">person_add</span><span>Teacher</span>
+  </button>
+  <button class="bottom-nav-item active" data-section="add-student" onclick="showSection('add-student');closeSidebar();">
+    <span class="material-symbols-outlined">group_add</span><span>Student</span>
+  </button>
+</nav>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+<script src="js/admin-script.js"></script>
+</body>
+</html>
