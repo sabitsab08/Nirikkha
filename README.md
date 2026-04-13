@@ -1,0 +1,2 @@
+# Nirikkha
+Result Management System
