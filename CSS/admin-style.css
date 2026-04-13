@@ -1,5 +1,11 @@
-/* ================= RESET ================= */
-*, *::before, *::after {
+/* ══════════════════════════════════════════
+   NIRIKKHA ADMIN — CLEAN CSS
+   ══════════════════════════════════════════ */
+
+/* ── RESET ── */
+*,
+*::before,
+*::after {
   box-sizing: border-box;
   margin: 0;
   padding: 0;
@@ -16,219 +22,46 @@ body {
   min-height: 100vh;
 }
 
-/* ================= VARIABLES ================= */
+/* ── VARIABLES ── */
 :root {
   --primary: #001e40;
-  --primary-fixed: #d5e3ff;
   --primary-container: #003366;
   --on-primary: #ffffff;
 
   --secondary: #47617b;
   --secondary-container: #c4e0ff;
-  --on-secondary: #ffffff;
 
   --tertiary: #381300;
-  --tertiary-container: #592300;
-  --tertiary-fixed: #ffdbca;
-  --on-tertiary: #ffffff;
 
   --error: #ba1a1a;
-  --error-container: #ffdad6;
-  --on-error: #ffffff;
 
   --surface: #f9f9fe;
-  --surface-variant: #e2e2e7;
-  --surface-tint: #3a5f94;
-
-  --surface-container-lowest: #ffffff;
-  --surface-container-low: #f4f3f8;
   --surface-container: #eeedf2;
 
   --on-surface: #1a1c1f;
-  --on-surface-variant: #43474f;
 
   --outline: #737780;
-  --outline-variant: #c3c6d1;
 }
 
-/* ================= ICON ================= */
+/* ── MATERIAL ICON ── */
 .material-symbols-outlined {
   font-family: 'Material Symbols Outlined';
-  font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+  font-variation-settings:
+    'FILL' 0,
+    'wght' 400,
+    'GRAD' 0,
+    'opsz' 24;
+
   display: inline-block;
   vertical-align: middle;
-  line-height: 1;
 }
 
-/* ================= TOP NAV ================= */
-.topnav {
-  position: fixed;
-  top: 0;
-  width: 100%;
-  z-index: 50;
-  background: rgba(248, 250, 252, 0.7);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
-  box-shadow: 0 1px 2px rgba(0,0,0,0.05);
-}
-
-.topnav-inner {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  height: 4rem;
-  width: 100%;
-  padding: 0 1rem;
-}
-
-.topnav-left {
-  display: flex;
-  align-items: center;
-  gap: 0.75rem;
-}
-
-.topnav-right {
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-}
-
-.brand-name {
-  font-size: 1.25rem;
-  font-weight: 700;
-  letter-spacing: -0.05em;
-  color: #172554;
-}
-
-/* ================= SEARCH ================= */
-.search-bar {
-  display: none;
-  align-items: center;
-  gap: 0.5rem;
-  padding: 0.375rem 0.75rem;
-  background: rgba(226,232,240,0.5);
-  border-radius: 0.5rem;
-}
-
-.search-bar input {
-  width: 16rem;
-  font-size: 0.875rem;
-  border: none;
-  outline: none;
-  background: transparent;
-  color: #1a1c1f;
-}
-
-.search-bar input::placeholder {
-  color: #64748b;
-}
-
-/* ================= BUTTONS ================= */
-.icon-btn {
-  display: flex;
-  align-items: center;
-  padding: 0.5rem;
-  border: none;
-  background: none;
-  border-radius: 0.5rem;
-  cursor: pointer;
-  color: #64748b;
-  transition: background 0.15s;
-}
-
-.icon-btn:hover {
-  background: rgba(226,232,240,0.5);
-}
-
-.settings-btn {
-  display: none;
-  padding: 0.5rem;
-  border: none;
-  background: none;
-  cursor: pointer;
-  font-weight: 700;
-  color: #1e3a5f;
-  border-bottom: 2px solid #1e3a5f;
-}
-
-/* ================= AVATAR ================= */
-.avatar {
-  width: 2rem;
-  height: 2rem;
-  margin-left: 0.25rem;
-  border-radius: 9999px;
-  overflow: hidden;
-  background: #e2e8f0;
-}
-
-.avatar img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-}
-
-/* ================= SIDEBAR ================= */
-#sidebar {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 16rem;
-  height: 100vh;
-  z-index: 40;
-  display: flex;
-  flex-direction: column;
-  gap: 0.5rem;
-  padding: 5rem 1rem 1rem;
-  background: #f1f5f9;
-  transition: transform 0.28s cubic-bezier(.4,0,.2,1);
-}
-
-/* ================= NAV LINKS ================= */
-.nav-link {
-  display: flex;
-  align-items: center;
-  gap: 0.75rem;
-  width: 100%;
-  padding: 0.625rem 0.75rem;
-  border: none;
-  background: none;
-  text-align: left;
-  cursor: pointer;
-  border-radius: 0.5rem;
-
-  font-size: 0.875rem;
-  font-weight: 500;
-  letter-spacing: 0.025em;
-  color: #475569;
-
-  transition: all 0.2s ease;
-}
-
-.nav-link:hover {
-  color: #1e3a8a;
-}
-
-.nav-link.active {
-  background: white;
-  color: #1e3a8a;
-  font-weight: 700;
-  box-shadow: 0 1px 2px rgba(0,0,0,0.05);
-}
-
-/* ================= MAIN CONTENT ================= */
-#main-content {
-  padding-top: 4rem;
-  min-height: 100vh;
-  background: white;
-}
-
-/* ================= TOAST ================= */
+/* ── TOAST ── */
 .toast-container {
   position: fixed;
   top: 20px;
   right: 20px;
   z-index: 9999;
-  max-width: 400px;
 }
 
 .toast {
@@ -236,33 +69,216 @@ body {
   align-items: center;
   gap: 1rem;
 
+  padding: 1rem;
   margin-bottom: 0.75rem;
-  padding: 1rem 1.5rem;
 
   border-radius: 0.5rem;
   color: white;
-  font-weight: 500;
 
   box-shadow: 0 4px 12px rgba(0,0,0,0.15);
   animation: slideIn 0.3s ease;
 }
 
-.toast.success { background: #16a34a; }
-.toast.error   { background: #ba1a1a; }
-.toast.info    { background: #2563eb; }
+.toast.success {
+  background: #16a34a;
+}
 
-/* ================= ANIMATION ================= */
+.toast.error {
+  background: #ba1a1a;
+}
+
+.toast.info {
+  background: #2563eb;
+}
+
 @keyframes slideIn {
-  from { transform: translateX(400px); opacity: 0; }
-  to   { transform: translateX(0); opacity: 1; }
+  from {
+    transform: translateX(400px);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
 }
 
-@keyframes slideOut {
-  from { transform: translateX(0); opacity: 1; }
-  to   { transform: translateX(400px); opacity: 0; }
+/* ── SPINNER ── */
+.spinner {
+  width: 20px;
+  height: 20px;
+
+  border: 3px solid rgba(255,255,255,0.3);
+  border-top: 3px solid white;
+  border-radius: 50%;
+
+  animation: spin 1s linear infinite;
 }
 
-/* ================= UTIL ================= */
-.hidden {
-  display: none !important;
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* ── TOP NAV ── */
+.topnav {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 50;
+
+  background: rgba(248,250,252,0.7);
+  backdrop-filter: blur(12px);
+
+  box-shadow: 0 1px 2px rgba(0,0,0,0.05);
+}
+
+.topnav-inner {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  height: 4rem;
+  padding: 0 1rem;
+}
+
+.topnav-left,
+.topnav-right {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.brand-name {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: #172554;
+}
+
+/* ── SEARCH ── */
+.search-bar {
+  display: none;
+  align-items: center;
+  gap: 0.5rem;
+
+  padding: 0.4rem 0.8rem;
+  border-radius: 0.5rem;
+
+  background: #e2e8f0;
+}
+
+.search-bar input {
+  border: none;
+  outline: none;
+  background: transparent;
+}
+
+/* ── BUTTONS ── */
+.icon-btn {
+  padding: 0.5rem;
+  border-radius: 0.5rem;
+  background: none;
+  cursor: pointer;
+}
+
+.icon-btn:hover {
+  background: #e2e8f0;
+}
+
+/* ── SIDEBAR ── */
+#sidebar {
+  position: fixed;
+  top: 0;
+  left: 0;
+
+  width: 16rem;
+  height: 100vh;
+
+  padding: 5rem 1rem 1rem;
+  background: #f1f5f9;
+
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+
+  transition: transform 0.3s;
+}
+
+.nav-link {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+
+  padding: 0.6rem;
+  border-radius: 0.5rem;
+
+  font-size: 0.875rem;
+  cursor: pointer;
+}
+
+.nav-link:hover {
+  background: #e2e8f0;
+}
+
+.nav-link.active {
+  background: white;
+  font-weight: bold;
+}
+
+/* ── MAIN ── */
+#main-content {
+  padding-top: 4rem;
+  min-height: 100vh;
+}
+
+@media (min-width: 768px) {
+  #main-content {
+    padding-left: 16rem;
+  }
+}
+
+/* ── CARD ── */
+.card {
+  padding: 1.5rem;
+  border-radius: 0.75rem;
+  background: var(--surface-container);
+}
+
+/* ── GRID ── */
+.card-grid {
+  display: grid;
+  gap: 1.5rem;
+  margin-top: 2rem;
+}
+
+@media (min-width: 768px) {
+  .card-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+/* ── TABLE ── */
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+th,
+td {
+  padding: 0.75rem 0;
+}
+
+/* ── MOBILE NAV ── */
+#bottom-nav {
+  display: none;
+}
+
+@media (max-width: 767px) {
+  #bottom-nav {
+    display: flex;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    background: white;
+  }
 }

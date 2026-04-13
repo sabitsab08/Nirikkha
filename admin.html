@@ -6,16 +6,19 @@
 <title>Nirikkha - Admin Dashboard</title>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet"/>
 <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
-<link rel="stylesheet" href="CSS/admin-style.css">
+<link rel="stylesheet" href="CSS/admin-style.css"/>
 </head>
 <body>
 
 <div id="toast-container" class="toast-container"></div>
 
+<!-- ══════════════ TOP NAV ══════════════ -->
 <nav class="topnav">
   <div class="topnav-inner">
     <div class="topnav-left">
-      <button id="hamburger-btn" onclick="toggleSidebar()" aria-label="Toggle menu"><span class="material-symbols-outlined">menu</span></button>
+      <button id="hamburger-btn" onclick="toggleSidebar()" aria-label="Toggle menu">
+        <span class="material-symbols-outlined">menu</span>
+      </button>
       <span class="brand-name">Nirikkha</span>
       <div class="search-bar">
         <span class="material-symbols-outlined" style="font-size:0.875rem;color:#64748b">search</span>
@@ -25,30 +28,37 @@
     <div class="topnav-right">
       <button class="icon-btn"><span class="material-symbols-outlined">notifications</span></button>
       <button class="settings-btn"><span class="material-symbols-outlined">settings</span></button>
-      <div class="avatar"><img alt="Admin" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAvx9xYpV0dFFOzsPh3b9l5c4bmDkvXqbiL22O14pZNDSEgBpZG8Z5JaGe2fRxUMphBIINcikgjRcjo5orhWwuRw3NIVTDXZkYXTLKj5iVlulNM-UcJEwIoU4IjKUfWZ7rw41sTHOHNuXRTzacZWpoxcWkZQ2egHcrpaTQ0Hm8PsSLKNQVuFYzSKdg6GoVI_w4OG97vnZgvLY90J9-iGwK9Rs0kU2NiDC8D9Ig3bB6f_OtFbXmuT08fkLLBgEJYZgGMobbq9KaJG40"/></div>
+      <div class="avatar">
+        <img alt="Admin" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAvx9xYpV0dFFOzsPh3b9l5c4bmDkvXqbiL22O14pZNDSEgBpZG8Z5JaGe2fRxUMphBIINcikgjRcjo5orhWwuRw3NIVTDXZkYXTLKj5iVlulNM-UcJEwIoU4IjKUfWZ7rw41sTHOHNuXRTzacZWpoxcWkZQ2egHcrpaTQ0Hm8PsSLKNQVuFYzSKdg6GoVI_w4OG97vnZgvLY90J9-iGwK9Rs0kU2NiDC8D9Ig3bB6f_OtFbXmuT08fkLLBgEJYZgGMobbq9KaJG40"/>
+      </div>
     </div>
   </div>
   <div class="topnav-divider"></div>
 </nav>
 
+<!-- ══════════════ SIDEBAR OVERLAY ══════════════ -->
 <div id="sidebar-overlay" onclick="toggleSidebar()"></div>
 
+<!-- ══════════════ SIDEBAR ══════════════ -->
 <aside id="sidebar">
   <div class="sidebar-brand">
     <div class="sidebar-brand-icon"><span class="material-symbols-outlined">school</span></div>
-    <div><h2 class="sidebar-brand-title">Admin Panel</h2><p class="sidebar-brand-sub">System Control</p></div>
+    <div>
+      <h2 class="sidebar-brand-title">Admin Panel</h2>
+      <p class="sidebar-brand-sub">System Control</p>
+    </div>
   </div>
   <nav class="sidebar-nav" id="main-nav">
-    <button class="nav-link" data-section="syllabus-management" onclick="navigate('syllabus-management')">
-      <span class="material-symbols-outlined">menu_book</span><span>Syllabus Management</span>
+    <button class="nav-link" data-section="academic-years" onclick="showSection('academic-years');closeSidebar();">
+      <span class="material-symbols-outlined">calendar_today</span><span>Academic Years</span>
     </button>
-    <button class="nav-link" data-section="user-role" onclick="navigate('user-role')">
+    <button class="nav-link" data-section="user-roles" onclick="showSection('user-roles');closeSidebar();">
       <span class="material-symbols-outlined">group</span><span>User Roles</span>
     </button>
-    <button class="nav-link" data-section="add-teacher" onclick="navigate('add-teacher')">
+    <button class="nav-link" data-section="add-teacher" onclick="showSection('add-teacher');closeSidebar();">
       <span class="material-symbols-outlined">person_add</span><span>Add Teacher</span>
     </button>
-    <button class="nav-link" data-section="add-student" onclick="navigate('add-student')">
+    <button class="nav-link" data-section="add-student" onclick="showSection('add-student');closeSidebar();">
       <span class="material-symbols-outlined">group_add</span><span>Add Student</span>
     </button>
   </nav>
@@ -58,86 +68,78 @@
   </div>
 </aside>
 
+<!-- ══════════════ MAIN CONTENT ══════════════ -->
 <main id="main-content">
-  <iframe id="page-frame" src="add-student.html" title="Page Content"></iframe>
+  <div class="content-wrap">
+    <div id="content-area">
+      <!-- Sections will be injected here by JS or can be added manually -->
+      <!-- Example placeholder sections: -->
+      <section class="dashboard-section hidden" id="section-academic-years">
+        <div class="section-header">
+          <h2 class="section-title">Academic Years</h2>
+          <button class="btn btn-primary" style="padding:0.5rem 1rem;font-size:0.875rem;">+ New Session</button>
+        </div>
+        <div class="card">
+          <p style="color:var(--on-surface-variant)">Manage and configure academic sessions and terms for the institution.</p>
+          <div class="card-grid">
+            <div class="mini-card">
+              <div class="mini-card-header"><span class="badge-active">Active</span><span class="material-symbols-outlined" style="color:#94a3b8">more_vert</span></div>
+              <h4 style="font-weight:700">2023-2024 Session</h4>
+              <p style="font-size:0.75rem;color:#64748b">Current ongoing academic year</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="dashboard-section hidden" id="section-user-roles">
+        <h2 class="section-title" style="margin-bottom:1.5rem">User Roles &amp; Permissions</h2>
+        <div class="card">
+          <div class="access-control-header">
+            <div class="access-control-icon"><span class="material-symbols-outlined">security</span></div>
+            <div>
+              <h3 style="font-weight:700;font-size:1.125rem">Access Control</h3>
+              <p style="font-size:0.875rem;color:var(--on-surface-variant)">Configure what different user levels can see and do.</p>
+            </div>
+          </div>
+          <div class="overflow-x-auto">
+            <table>
+              <thead><tr><th>Role Name</th><th>Description</th><th>User Count</th><th>Actions</th></tr></thead>
+              <tbody>
+                <tr><td style="font-weight:600">Administrator</td><td style="color:#475569">Full system access</td><td>3</td><td style="color:var(--primary);font-weight:500;cursor:pointer">Edit</td></tr>
+                <tr><td style="font-weight:600">Teacher</td><td style="color:#475569">Class management &amp; grading</td><td>42</td><td style="color:var(--primary);font-weight:500;cursor:pointer">Edit</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </section>
+
+      <section class="dashboard-section hidden" id="section-add-teacher">
+        <p style="color:var(--on-surface-variant);padding:2rem">Add Teacher form goes here.</p>
+      </section>
+
+      <section class="dashboard-section hidden" id="section-add-student">
+        <p style="color:var(--on-surface-variant);padding:2rem">Add Student form goes here.</p>
+      </section>
+    </div>
+  </div>
 </main>
 
+<!-- ══════════════ BOTTOM NAV ══════════════ -->
 <nav id="bottom-nav" style="align-items:center;justify-content:space-around">
-  <button class="bottom-nav-item" data-section="syllabus-management" onclick="navigate('syllabus-management')">
-    <span class="material-symbols-outlined">menu_book</span><span>Syllabus</span>
+  <button class="bottom-nav-item" data-section="academic-years" onclick="showSection('academic-years');closeSidebar();">
+    <span class="material-symbols-outlined">calendar_today</span><span>Years</span>
   </button>
-  <button class="bottom-nav-item" data-section="user-role" onclick="navigate('user-role')">
+  <button class="bottom-nav-item" data-section="user-roles" onclick="showSection('user-roles');closeSidebar();">
     <span class="material-symbols-outlined">group</span><span>Roles</span>
   </button>
-  <button class="bottom-nav-item" data-section="add-teacher" onclick="navigate('add-teacher')">
+  <button class="bottom-nav-item" data-section="add-teacher" onclick="showSection('add-teacher');closeSidebar();">
     <span class="material-symbols-outlined">person_add</span><span>Teacher</span>
   </button>
-  <button class="bottom-nav-item active" data-section="add-student" onclick="navigate('add-student')">
+  <button class="bottom-nav-item active" data-section="add-student" onclick="showSection('add-student');closeSidebar();">
     <span class="material-symbols-outlined">group_add</span><span>Student</span>
   </button>
 </nav>
 
-<script>
-const PAGES = {
-  'syllabus-management': 'syllabus-management.html',
-  'user-role':           'user-role.html',
-  'add-teacher':         'add-teacher.html',
-  'add-student':         'add-student.html',
-};
-
-let currentSection = 'add-student';
-
-function navigate(section) {
-  if (!PAGES[section]) return;
-  currentSection = section;
-  document.getElementById('page-frame').src = PAGES[section];
-  updateActiveLinks(section);
-  closeSidebar();
-  // update URL hash without reload
-  history.replaceState(null, '', '#' + section);
-}
-
-function updateActiveLinks(section) {
-  document.querySelectorAll('.nav-link, .bottom-nav-item').forEach(el => {
-    el.classList.toggle('active', el.getAttribute('data-section') === section);
-  });
-}
-
-function toggleSidebar() {
-  document.getElementById('sidebar').classList.toggle('open');
-  document.getElementById('sidebar-overlay').classList.toggle('open');
-}
-function closeSidebar() {
-  document.getElementById('sidebar').classList.remove('open');
-  document.getElementById('sidebar-overlay').classList.remove('open');
-}
-
-// Handle hash on load
-window.addEventListener('DOMContentLoaded', () => {
-  const hash = location.hash.replace('#', '');
-  const initial = PAGES[hash] ? hash : 'add-student';
-  navigate(initial);
-});
-
-// Auto-resize iframe to content height
-const frame = document.getElementById('page-frame');
-frame.addEventListener('load', () => {
-  try {
-    const h = frame.contentDocument.body.scrollHeight;
-    frame.style.height = Math.max(h, window.innerHeight - 64) + 'px';
-  } catch(e) {}
-});
-
-// Global toast accessible from iframes
-window.showToast = function(msg, type='info') {
-  const c = document.getElementById('toast-container');
-  const t = document.createElement('div');
-  t.className = `toast ${type}`;
-  const ic = type==='success' ? 'check_circle' : type==='error' ? 'error' : 'info';
-  t.innerHTML = `<span class="material-symbols-outlined">${ic}</span><span>${msg}</span>`;
-  c.appendChild(t);
-  setTimeout(() => { t.style.animation = 'slideOut 0.3s ease'; setTimeout(() => t.remove(), 300); }, 3500);
-};
-</script>
+<script src="main.js"></script>
 </body>
 </html>
