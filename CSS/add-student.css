@@ -1,0 +1,405 @@
+/* ── BULK CARD ── */
+.bulk-card {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  background: var(--accent-bg);
+  border: 1.5px dashed var(--accent);
+  border-radius: 10px;
+  padding: 16px 18px;
+  cursor: pointer;
+  margin-bottom: 20px;
+  transition: background 0.15s, border-color 0.15s;
+}
+
+.bulk-card:hover {
+  background: var(--surface);
+}
+
+.bulk-icon {
+  width: 40px;
+  height: 40px;
+  border-radius: 10px;
+  background: var(--accent);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.bulk-icon .ms {
+  color: #fff;
+  font-size: 20px;
+}
+
+.bulk-text {
+  flex: 1;
+}
+
+.bulk-title {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--accent);
+}
+
+.bulk-sub {
+  font-size: 11px;
+  color: var(--text3);
+  margin-top: 2px;
+  line-height: 1.5;
+}
+
+.bulk-arrow .ms {
+  font-size: 20px;
+  color: var(--accent);
+}
+
+/* ── DIVIDER ── */
+.form-divider {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 6px;
+  font-size: 10px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--text3);
+}
+
+.form-divider::before,
+.form-divider::after {
+  content: '';
+  flex: 1;
+  height: 1px;
+  background: var(--border);
+}
+
+.required-note {
+  font-size: 11px;
+  color: var(--text3);
+  margin-bottom: 18px;
+}
+
+/* ── FORM ── */
+.enroll-form {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+/* ── PHOTO UPLOAD ── */
+.photo-section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  padding-bottom: 6px;
+}
+
+.photo-upload {
+  width: 88px;
+  height: 88px;
+  border-radius: 50%;
+  border: 2px dashed var(--border2);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  overflow: hidden;
+  background: var(--bg);
+  transition: border-color 0.15s, background 0.15s;
+  position: relative;
+}
+
+.photo-upload:hover {
+  border-color: var(--accent);
+  background: var(--accent-bg);
+}
+
+.photo-placeholder {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+}
+
+.photo-placeholder .ms {
+  font-size: 24px;
+  color: var(--text3);
+}
+
+.photo-hint {
+  font-size: 10px;
+  color: var(--text3);
+  font-weight: 500;
+}
+
+.photo-preview {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.photo-label {
+  font-size: 12px;
+  font-weight: 500;
+  color: var(--text2);
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+/* ── FORM ROW ── */
+.form-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+}
+
+@media (max-width: 560px) {
+  .form-row {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* ── FIELD ── */
+.field-wrap {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.field-label {
+  font-size: 12px;
+  font-weight: 500;
+  color: var(--text2);
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.req {
+  color: #dc2626;
+  font-weight: 600;
+}
+
+.optional-tag {
+  font-size: 10px;
+  font-weight: 400;
+  color: var(--text3);
+  background: var(--bg);
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  padding: 1px 5px;
+}
+
+.input-wrap {
+  display: flex;
+  align-items: center;
+  gap: 0;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  height: 38px;
+  padding: 0 10px;
+  transition: border-color 0.15s, box-shadow 0.15s;
+  position: relative;
+}
+
+.input-wrap:focus-within {
+  border-color: var(--accent);
+  box-shadow: 0 0 0 3px rgba(29, 78, 216, 0.08);
+}
+
+html.dark .input-wrap:focus-within {
+  box-shadow: 0 0 0 3px rgba(147, 197, 253, 0.1);
+}
+
+.input-icon {
+  font-size: 16px;
+  color: var(--text3);
+  flex-shrink: 0;
+  margin-right: 8px;
+}
+
+.field-input {
+  flex: 1;
+  background: none;
+  border: none;
+  outline: none;
+  font-family: 'Inter', sans-serif;
+  font-size: 13px;
+  color: var(--text);
+  width: 100%;
+}
+
+.field-input::placeholder {
+  color: var(--text3);
+  font-size: 12px;
+}
+
+/* ── SELECT ── */
+.select-wrap {
+  position: relative;
+}
+
+.field-select {
+  appearance: none;
+  -webkit-appearance: none;
+  cursor: pointer;
+  padding-right: 28px;
+}
+
+.select-arrow {
+  position: absolute;
+  right: 8px;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 16px;
+  color: var(--text3);
+  pointer-events: none;
+}
+
+/* ── PASSWORD TOGGLE ── */
+.eye-btn {
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  display: flex;
+  align-items: center;
+  color: var(--text3);
+  flex-shrink: 0;
+  margin-left: 4px;
+}
+
+.eye-btn .ms {
+  font-size: 17px;
+}
+
+.eye-btn:hover .ms {
+  color: var(--text2);
+}
+
+/* ── HIDDEN HELPERS ── */
+.hidden-input {
+  display: none;
+}
+
+.hidden-el {
+  display: none;
+}
+
+/* ── FORM ACTIONS ── */
+.form-actions {
+  display: flex;
+  gap: 10px;
+  margin-top: 6px;
+  flex-wrap: wrap;
+}
+
+.btn-pdf {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  padding: 0 18px;
+  height: 40px;
+  border-radius: 8px;
+  border: 1px solid var(--border2);
+  background: var(--surface);
+  font-family: 'Inter', sans-serif;
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--text2);
+  cursor: pointer;
+  transition: background 0.15s, border-color 0.15s, color 0.15s;
+  white-space: nowrap;
+}
+
+.btn-pdf .ms {
+  font-size: 16px;
+  color: var(--text3);
+}
+
+.btn-pdf:hover {
+  background: var(--bg);
+  border-color: var(--text3);
+  color: var(--text);
+}
+
+.btn-enroll {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  padding: 0 22px;
+  height: 40px;
+  border-radius: 8px;
+  border: none;
+  background: var(--accent);
+  font-family: 'Inter', sans-serif;
+  font-size: 13px;
+  font-weight: 600;
+  color: #fff;
+  cursor: pointer;
+  transition: opacity 0.15s, transform 0.1s;
+  white-space: nowrap;
+  flex: 1;
+  justify-content: center;
+}
+
+.btn-enroll .ms {
+  font-size: 17px;
+}
+
+.btn-enroll:hover {
+  opacity: 0.88;
+}
+
+.btn-enroll:active {
+  transform: scale(0.98);
+}
+
+/* ── SUCCESS TOAST ── */
+.toast {
+  position: fixed;
+  bottom: 80px;
+  left: 50%;
+  transform: translateX(-50%) translateY(20px);
+  background: #166534;
+  color: #fff;
+  font-size: 13px;
+  font-weight: 500;
+  padding: 10px 20px;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.25s, transform 0.25s;
+  z-index: 200;
+  white-space: nowrap;
+}
+
+.toast.show {
+  opacity: 1;
+  transform: translateX(-50%) translateY(0);
+}
+
+.toast .ms {
+  font-size: 17px;
+}
+
+@media (min-width: 768px) {
+  .toast {
+    bottom: 28px;
+    left: calc(var(--sidebar-w) + 40px);
+    transform: translateY(20px);
+  }
+
+  .toast.show {
+    transform: translateY(0);
+  }
+}
