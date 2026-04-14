@@ -1,145 +1,218 @@
 <!DOCTYPE html>
-<html class="light" lang="en">
+<html lang="en">
 <head>
-<meta charset="utf-8"/>
-<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-<title>Nirikkha - Admin Dashboard</title>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet"/>
-<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
-<link rel="stylesheet" href="CSS/admin-style.css"/>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Nirikkha — Admin</title>
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="CSS/admin-style.css"/>
 </head>
 <body>
 
-<div id="toast-container" class="toast-container"></div>
-
-<!-- ══════════════ TOP NAV ══════════════ -->
-<nav class="topnav">
-  <div class="topnav-inner">
-    <div class="topnav-left">
-      <button id="hamburger-btn" onclick="toggleSidebar()" aria-label="Toggle menu">
-        <span class="material-symbols-outlined">menu</span>
+  <!-- TOPBAR -->
+  <header class="topbar">
+    <div class="topbar-left">
+      <button class="tb-btn tb-btn-ham" id="ham" onclick="toggleSidebar()">
+        <span class="ms">menu</span>
       </button>
-      <span class="brand-name">Nirikkha</span>
-      <div class="search-bar">
-        <span class="material-symbols-outlined" style="font-size:0.875rem;color:#64748b">search</span>
-        <input placeholder="Search settings..." type="text"/>
+      <div class="logo-mark">
+        <span class="ms">school</span>
+      </div>
+      <span class="logo-name">Nirikkha</span>
+    </div>
+
+    <div class="topbar-center">
+      <div class="search-wrap">
+        <span class="ms">search</span>
+        <input type="text" placeholder="Search..."/>
       </div>
     </div>
-    <div class="topnav-right">
-      <button class="icon-btn"><span class="material-symbols-outlined">notifications</span></button>
-      <button class="settings-btn"><span class="material-symbols-outlined">settings</span></button>
+
+    <div class="topbar-right">
+      <button class="tb-btn" onclick="toggleTheme()">
+        <span class="ms" id="theme-ic">dark_mode</span>
+      </button>
       <div class="avatar">
-        <img alt="Admin" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAvx9xYpV0dFFOzsPh3b9l5c4bmDkvXqbiL22O14pZNDSEgBpZG8Z5JaGe2fRxUMphBIINcikgjRcjo5orhWwuRw3NIVTDXZkYXTLKj5iVlulNM-UcJEwIoU4IjKUfWZ7rw41sTHOHNuXRTzacZWpoxcWkZQ2egHcrpaTQ0Hm8PsSLKNQVuFYzSKdg6GoVI_w4OG97vnZgvLY90J9-iGwK9Rs0kU2NiDC8D9Ig3bB6f_OtFbXmuT08fkLLBgEJYZgGMobbq9KaJG40"/>
+        <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuAvx9xYpV0dFFOzsPh3b9l5c4bmDkvXqbiL22O14pZNDSEgBpZG8Z5JaGe2fRxUMphBIINcikgjRcjo5orhWwuRw3NIVTDXZkYXTLKj5iVlulNM-UcJEwIoU4IjKUfWZ7rw41sTHOHNuXRTzacZWpoxcWkZQ2egHcrpaTQ0Hm8PsSLKNQVuFYzSKdg6GoVI_w4OG97vnZgvLY90J9-iGwK9Rs0kU2NiDC8D9Ig3bB6f_OtFbXmuT08fkLLBgEJYZgGMobbq9KaJG40" alt="Admin"/>
       </div>
     </div>
-  </div>
-  <div class="topnav-divider"></div>
-</nav>
+  </header>
 
-<!-- ══════════════ SIDEBAR OVERLAY ══════════════ -->
-<div id="sidebar-overlay" onclick="toggleSidebar()"></div>
+  <!-- OVERLAY -->
+  <div class="overlay" id="overlay" onclick="toggleSidebar()"></div>
 
-<!-- ══════════════ SIDEBAR ══════════════ -->
-<aside id="sidebar">
-  <div class="sidebar-brand">
-    <div class="sidebar-brand-icon"><span class="material-symbols-outlined">school</span></div>
-    <div>
-      <h2 class="sidebar-brand-title">Admin Panel</h2>
-      <p class="sidebar-brand-sub">System Control</p>
+  <!-- SIDEBAR -->
+  <aside class="sidebar" id="sidebar">
+
+    <div class="sidebar-profile">
+      <div class="sb-avatar">
+        <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuAvx9xYpV0dFFOzsPh3b9l5c4bmDkvXqbiL22O14pZNDSEgBpZG8Z5JaGe2fRxUMphBIINcikgjRcjo5orhWwuRw3NIVTDXZkYXTLKj5iVlulNM-UcJEwIoU4IjKUfWZ7rw41sTHOHNuXRTzacZWpoxcWkZQ2egHcrpaTQ0Hm8PsSLKNQVuFYzSKdg6GoVI_w4OG97vnZgvLY90J9-iGwK9Rs0kU2NiDC8D9Ig3bB6f_OtFbXmuT08fkLLBgEJYZgGMobbq9KaJG40" alt="Admin"/>
+      </div>
+      <div>
+        <div class="sb-name">Admin</div>
+        <div class="sb-role">System Administrator</div>
+      </div>
     </div>
+
+    <div class="nav-section">Main</div>
+
+    <button class="nav-item active" onclick="setNav(this); closeSidebar();">
+      <span class="ms">dashboard</span>Dashboard
+    </button>
+
+    <div class="nav-section nav-section-gap">Management</div>
+
+    <button class="nav-item" onclick="setNav(this); closeSidebar();">
+      <span class="ms">menu_book</span>Syllabus
+    </button>
+    <button class="nav-item" onclick="setNav(this); closeSidebar();">
+      <span class="ms">manage_accounts</span>Roles
+    </button>
+    <button class="nav-item" onclick="setNav(this); closeSidebar();">
+      <span class="ms">group_add</span>Add student
+    </button>
+    <button class="nav-item" onclick="setNav(this); closeSidebar();">
+      <span class="ms">person_add</span>Add teacher
+    </button>
+
+    <div class="nav-spacer"></div>
+
+    <div class="sidebar-footer">
+      <button class="nav-item" onclick="closeSidebar();">
+        <span class="ms">help_outline</span>Support
+      </button>
+      <button class="nav-item logout" onclick="closeSidebar();">
+        <span class="ms">logout</span>Logout
+      </button>
+    </div>
+
+  </aside>
+
+  <!-- LAYOUT -->
+  <div class="layout">
+    <main class="main">
+
+      <!-- Page header -->
+      <div class="page-header">
+        <div>
+          <div class="greeting">Welcome back, Admin</div>
+          <div class="date-str" id="datestr"></div>
+        </div>
+        <div class="role-badge">
+          <span class="ms">admin_panel_settings</span>
+          <span>Admin panel</span>
+        </div>
+      </div>
+
+      <!-- Stats -->
+      <div class="stat-row">
+        <div class="stat-tile">
+          <div class="stat-icon icon-blue">
+            <span class="ms">group</span>
+          </div>
+          <div>
+            <div class="stat-val">1,248</div>
+            <div class="stat-lbl">Students</div>
+          </div>
+        </div>
+        <div class="stat-tile">
+          <div class="stat-icon icon-yellow">
+            <span class="ms">badge</span>
+          </div>
+          <div>
+            <div class="stat-val">84</div>
+            <div class="stat-lbl">Teachers</div>
+          </div>
+        </div>
+        <div class="stat-tile">
+          <div class="stat-icon icon-green">
+            <span class="ms">menu_book</span>
+          </div>
+          <div>
+            <div class="stat-val">36</div>
+            <div class="stat-lbl">Syllabuses</div>
+          </div>
+        </div>
+        <div class="stat-tile">
+          <div class="stat-icon icon-purple">
+            <span class="ms">security</span>
+          </div>
+          <div>
+            <div class="stat-val">5</div>
+            <div class="stat-lbl">User roles</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Manage shortcuts -->
+      <div class="section-lbl">Manage</div>
+      <div class="menu-grid">
+        <button class="menu-tile">
+          <div class="tile-icon icon-green">
+            <span class="ms">menu_book</span>
+          </div>
+          <div>
+            <div class="tile-name">Syllabus</div>
+            <div class="tile-sub">Manage curriculum</div>
+          </div>
+        </button>
+        <button class="menu-tile">
+          <div class="tile-icon icon-purple">
+            <span class="ms">manage_accounts</span>
+          </div>
+          <div>
+            <div class="tile-name">Roles</div>
+            <div class="tile-sub">Set permissions</div>
+          </div>
+        </button>
+        <button class="menu-tile">
+          <div class="tile-icon icon-blue">
+            <span class="ms">group_add</span>
+          </div>
+          <div>
+            <div class="tile-name">Add student</div>
+            <div class="tile-sub">Enroll students</div>
+          </div>
+        </button>
+        <button class="menu-tile">
+          <div class="tile-icon icon-yellow">
+            <span class="ms">person_add</span>
+          </div>
+          <div>
+            <div class="tile-name">Add teacher</div>
+            <div class="tile-sub">Register faculty</div>
+          </div>
+        </button>
+      </div>
+
+      <!-- Footer -->
+      <div class="page-footer">
+        Developed by <strong>নিপাতনে সিদ্ধ Softwares</strong>
+      </div>
+
+    </main>
   </div>
-  <nav class="sidebar-nav" id="main-nav">
-    <button class="nav-link" data-section="academic-years" onclick="showSection('academic-years');closeSidebar();">
-      <span class="material-symbols-outlined">calendar_today</span><span>Academic Years</span>
+
+  <!-- BOTTOM NAV (mobile) -->
+  <nav class="bottom-nav">
+    <button class="bn-item active" onclick="setActive(this)">
+      <span class="ms">dashboard</span>Home
     </button>
-    <button class="nav-link" data-section="user-roles" onclick="showSection('user-roles');closeSidebar();">
-      <span class="material-symbols-outlined">group</span><span>User Roles</span>
+    <button class="bn-item" onclick="setActive(this)">
+      <span class="ms">menu_book</span>Syllabus
     </button>
-    <button class="nav-link" data-section="add-teacher" onclick="showSection('add-teacher');closeSidebar();">
-      <span class="material-symbols-outlined">person_add</span><span>Add Teacher</span>
+    <button class="bn-item" onclick="setActive(this)">
+      <span class="ms">manage_accounts</span>Roles
     </button>
-    <button class="nav-link" data-section="add-student" onclick="showSection('add-student');closeSidebar();">
-      <span class="material-symbols-outlined">group_add</span><span>Add Student</span>
+    <button class="bn-item" onclick="setActive(this)">
+      <span class="ms">group_add</span>Students
+    </button>
+    <button class="bn-item" onclick="setActive(this)">
+      <span class="ms">person_add</span>Teachers
     </button>
   </nav>
-  <div class="sidebar-footer">
-    <a href="#"><span class="material-symbols-outlined">help</span><span>Support</span></a>
-    <a class="logout" href="#"><span class="material-symbols-outlined">logout</span><span>Logout</span></a>
-  </div>
-</aside>
 
-<!-- ══════════════ MAIN CONTENT ══════════════ -->
-<main id="main-content">
-  <div class="content-wrap">
-    <div id="content-area">
-      <!-- Sections will be injected here by JS or can be added manually -->
-      <!-- Example placeholder sections: -->
-      <section class="dashboard-section hidden" id="section-academic-years">
-        <div class="section-header">
-          <h2 class="section-title">Academic Years</h2>
-          <button class="btn btn-primary" style="padding:0.5rem 1rem;font-size:0.875rem;">+ New Session</button>
-        </div>
-        <div class="card">
-          <p style="color:var(--on-surface-variant)">Manage and configure academic sessions and terms for the institution.</p>
-          <div class="card-grid">
-            <div class="mini-card">
-              <div class="mini-card-header"><span class="badge-active">Active</span><span class="material-symbols-outlined" style="color:#94a3b8">more_vert</span></div>
-              <h4 style="font-weight:700">2023-2024 Session</h4>
-              <p style="font-size:0.75rem;color:#64748b">Current ongoing academic year</p>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <section class="dashboard-section hidden" id="section-user-roles">
-        <h2 class="section-title" style="margin-bottom:1.5rem">User Roles &amp; Permissions</h2>
-        <div class="card">
-          <div class="access-control-header">
-            <div class="access-control-icon"><span class="material-symbols-outlined">security</span></div>
-            <div>
-              <h3 style="font-weight:700;font-size:1.125rem">Access Control</h3>
-              <p style="font-size:0.875rem;color:var(--on-surface-variant)">Configure what different user levels can see and do.</p>
-            </div>
-          </div>
-          <div class="overflow-x-auto">
-            <table>
-              <thead><tr><th>Role Name</th><th>Description</th><th>User Count</th><th>Actions</th></tr></thead>
-              <tbody>
-                <tr><td style="font-weight:600">Administrator</td><td style="color:#475569">Full system access</td><td>3</td><td style="color:var(--primary);font-weight:500;cursor:pointer">Edit</td></tr>
-                <tr><td style="font-weight:600">Teacher</td><td style="color:#475569">Class management &amp; grading</td><td>42</td><td style="color:var(--primary);font-weight:500;cursor:pointer">Edit</td></tr>
-              </tbody>
-            </table>
-          </div>
-        </div>
-      </section>
-
-      <section class="dashboard-section hidden" id="section-add-teacher">
-        <p style="color:var(--on-surface-variant);padding:2rem">Add Teacher form goes here.</p>
-      </section>
-
-      <section class="dashboard-section hidden" id="section-add-student">
-        <p style="color:var(--on-surface-variant);padding:2rem">Add Student form goes here.</p>
-      </section>
-    </div>
-  </div>
-</main>
-
-<!-- ══════════════ BOTTOM NAV ══════════════ -->
-<nav id="bottom-nav" style="align-items:center;justify-content:space-around">
-  <button class="bottom-nav-item" data-section="academic-years" onclick="showSection('academic-years');closeSidebar();">
-    <span class="material-symbols-outlined">calendar_today</span><span>Years</span>
-  </button>
-  <button class="bottom-nav-item" data-section="user-roles" onclick="showSection('user-roles');closeSidebar();">
-    <span class="material-symbols-outlined">group</span><span>Roles</span>
-  </button>
-  <button class="bottom-nav-item" data-section="add-teacher" onclick="showSection('add-teacher');closeSidebar();">
-    <span class="material-symbols-outlined">person_add</span><span>Teacher</span>
-  </button>
-  <button class="bottom-nav-item active" data-section="add-student" onclick="showSection('add-student');closeSidebar();">
-    <span class="material-symbols-outlined">group_add</span><span>Student</span>
-  </button>
-</nav>
-
-<script src="main.js"></script>
+  <script src="js/admin-script.js"></script>
 </body>
 </html>
