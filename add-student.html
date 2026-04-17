@@ -1,306 +1,217 @@
 <!DOCTYPE html>
-<html lang="en">
+<html class="light" lang="en">
 <head>
-  <meta charset="utf-8"/>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Nirikkha — Add Student</title>
-  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet"/>
-  <link rel="stylesheet" href="CSS/add-student.css"/>
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+  <title>Nirikkha - Add Student</title>
+
+  <!-- Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet">
+
+  <!-- Stylesheet -->
+  <link href="style.css" rel="stylesheet">
+
+  <!-- PDF Library -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
 </head>
 <body>
 
-  <!-- TOPBAR -->
-  <header class="topbar">
-    <div class="topbar-left">
-      <button class="tb-btn tb-btn-ham" id="ham" onclick="toggleSidebar()">
-        <span class="ms">menu</span>
-      </button>
-      <div class="logo-mark">
-        <span class="ms">school</span>
-      </div>
-      <span class="logo-name">Nirikkha</span>
+  <div id="toast-container" class="toast-container"></div>
+
+  <div class="main-wrapper">
+
+    <!-- Page Header -->
+    <div class="section-header">
+      <h1 class="section-title">🎓 Add New Student</h1>
+      <p style="color: var(--on-surface-variant); margin-top: 0.25rem;">Enroll students individually or via bulk CSV upload.</p>
     </div>
 
-    <div class="topbar-center">
-      <div class="search-wrap">
-        <span class="ms">search</span>
-        <input type="text" placeholder="Search..."/>
-      </div>
-    </div>
-
-    <div class="topbar-right">
-      <button class="tb-btn" onclick="toggleTheme()">
-        <span class="ms" id="theme-ic">dark_mode</span>
-      </button>
-      <div class="avatar">
-        <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuAvx9xYpV0dFFOzsPh3b9l5c4bmDkvXqbiL22O14pZNDSEgBpZG8Z5JaGe2fRxUMphBIINcikgjRcjo5orhWwuRw3NIVTDXZkYXTLKj5iVlulNM-UcJEwIoU4IjKUfWZ7rw41sTHOHNuXRTzacZWpoxcWkZQ2egHcrpaTQ0Hm8PsSLKNQVuFYzSKdg6GoVI_w4OG97vnZgvLY90J9-iGwK9Rs0kU2NiDC8D9Ig3bB6f_OtFbXmuT08fkLLBgEJYZgGMobbq9KaJG40" alt="Admin"/>
-      </div>
-    </div>
-  </header>
-
-  <!-- OVERLAY -->
-  <div class="overlay" id="overlay" onclick="toggleSidebar()"></div>
-
-  <!-- SIDEBAR -->
-  <aside class="sidebar" id="sidebar">
-
-    <div class="sidebar-profile">
-      <div class="sb-avatar">
-        <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuAvx9xYpV0dFFOzsPh3b9l5c4bmDkvXqbiL22O14pZNDSEgBpZG8Z5JaGe2fRxUMphBIINcikgjRcjo5orhWwuRw3NIVTDXZkYXTLKj5iVlulNM-UcJEwIoU4IjKUfWZ7rw41sTHOHNuXRTzacZWpoxcWkZQ2egHcrpaTQ0Hm8PsSLKNQVuFYzSKdg6GoVI_w4OG97vnZgvLY90J9-iGwK9Rs0kU2NiDC8D9Ig3bB6f_OtFbXmuT08fkLLBgEJYZgGMobbq9KaJG40" alt="Admin"/>
-      </div>
-      <div>
-        <div class="sb-name">Admin</div>
-        <div class="sb-role">System Administrator</div>
-      </div>
-    </div>
-
-    <div class="nav-section">Main</div>
-
-    <button class="nav-item" onclick="setNav(this); closeSidebar(); window.location.href='index.html';">
-      <span class="ms">dashboard</span>Dashboard
-    </button>
-
-    <div class="nav-section nav-section-gap">Management</div>
-
-    <button class="nav-item" onclick="setNav(this); closeSidebar();">
-      <span class="ms">menu_book</span>Syllabus
-    </button>
-    <button class="nav-item" onclick="setNav(this); closeSidebar();">
-      <span class="ms">manage_accounts</span>Roles
-    </button>
-    <button class="nav-item active" onclick="setNav(this); closeSidebar();">
-      <span class="ms">group_add</span>Add student
-    </button>
-    <button class="nav-item" onclick="setNav(this); closeSidebar();">
-      <span class="ms">person_add</span>Add teacher
-    </button>
-
-    <div class="nav-spacer"></div>
-
-    <div class="sidebar-footer">
-      <button class="nav-item" onclick="closeSidebar();">
-        <span class="ms">help_outline</span>Support
-      </button>
-      <button class="nav-item logout" onclick="closeSidebar();">
-        <span class="ms">logout</span>Logout
-      </button>
-    </div>
-
-  </aside>
-
-  <!-- LAYOUT -->
-  <div class="layout">
-    <main class="main">
-
-      <!-- Page header -->
-      <div class="page-header">
+    <!-- Main Panel -->
+    <div class="form-panel">
+      <div class="form-panel-header">
+        <div class="form-panel-icon">
+          <span class="material-symbols-outlined">group_add</span>
+        </div>
         <div>
-          <div class="greeting">Add Student</div>
-          <div class="date-str">Enroll a new student into the system</div>
-        </div>
-        <div class="role-badge">
-          <span class="ms">group_add</span>
-          <span>Enrollment</span>
+          <h3 style="font-size:1.25rem; font-weight:700; color:var(--on-surface)">Student Enrollment</h3>
+          <p style="font-size:0.75rem; color:var(--on-surface-variant)">Register new student profile & login credentials</p>
         </div>
       </div>
 
-      <!-- Bulk upload card -->
-      <div class="bulk-card" id="bulk-card" onclick="document.getElementById('csv-input').click()">
-        <input type="file" id="csv-input" accept=".csv" class="hidden-input"/>
-        <div class="bulk-icon">
-          <span class="ms">upload_file</span>
-        </div>
-        <div class="bulk-text">
-          <div class="bulk-title">Bulk Enrollment via CSV</div>
-          <div class="bulk-sub">Quickly import multiple student records at once. Click to upload your CSV file.</div>
-        </div>
-        <div class="bulk-arrow">
-          <span class="ms">chevron_right</span>
-        </div>
-      </div>
+      <div class="form-panel-body">
 
-      <!-- Divider -->
-      <div class="form-divider">
-        <span>Manual Enrollment</span>
-      </div>
-      <p class="required-note">* Required fields</p>
+        <!-- BULK CSV SECTION -->
+        <div class="bulk-card">
+          <div class="bulk-card-header">
+            <div>
+              <h4 style="font-size:0.875rem; font-weight:700; color:var(--primary); display:flex; align-items:center; gap:0.5rem">
+                <span class="material-symbols-outlined">upload_file</span>Bulk Enrollment via CSV
+              </h4>
+              <p style="font-size:11px; color:var(--on-surface-variant)">Import multiple student records at once using a CSV file.</p>
+            </div>
+            <a href="#" id="download-csv-template"
+               style="display:flex; align-items:center; gap:0.25rem; color:var(--primary); font-weight:700; font-size:11px; text-decoration:none">
+              <span class="material-symbols-outlined" style="font-size:0.75rem">download</span>Download CSV Template
+            </a>
+          </div>
 
-      <!-- FORM -->
-      <form class="enroll-form" id="enroll-form" onsubmit="handleSubmit(event)">
-
-        <!-- Profile Photo -->
-        <div class="photo-section">
-          <div class="photo-upload" id="photo-upload" onclick="document.getElementById('photo-input').click()">
-            <input type="file" id="photo-input" accept="image/*" class="hidden-input" onchange="previewPhoto(event)"/>
-            <img id="photo-preview" class="photo-preview hidden-el" alt="Preview"/>
-            <div class="photo-placeholder" id="photo-placeholder">
-              <span class="ms">photo_camera</span>
-              <span class="photo-hint">Choose Photo</span>
+          <div class="bulk-card-grid">
+            <div>
+              <div class="upload-area" id="csv-upload-area">
+                <input class="hidden" id="csv-upload-input" type="file" accept=".csv">
+                <label style="display:flex; flex-direction:column; align-items:center; cursor:pointer">
+                  <span class="material-symbols-outlined upload-area-icon">cloud_upload</span>
+                  <p style="font-size:11px; font-weight:600; color:var(--on-surface)">Upload CSV File</p>
+                  <p style="font-size:9px; color:var(--on-surface-variant); margin-top:0.125rem">Drag & drop or click to browse</p>
+                </label>
+              </div>
             </div>
-          </div>
-          <div class="photo-label">Profile Photo <span class="optional-tag">Optional</span></div>
-        </div>
-
-        <!-- Row: Full Name + Student ID -->
-        <div class="form-row">
-          <div class="field-wrap">
-            <label class="field-label">Full Name <span class="req">*</span></label>
-            <div class="input-wrap">
-              <span class="ms input-icon">person</span>
-              <input type="text" class="field-input" placeholder="e.g. Michael Chen" required/>
-            </div>
-          </div>
-          <div class="field-wrap">
-            <label class="field-label">Student ID <span class="req">*</span></label>
-            <div class="input-wrap">
-              <span class="ms input-icon">badge</span>
-              <input type="text" class="field-input" placeholder="100001" required/>
-            </div>
-          </div>
-        </div>
-
-        <!-- Row: Email + Phone -->
-        <div class="form-row">
-          <div class="field-wrap">
-            <label class="field-label">Student Email <span class="optional-tag">Optional</span></label>
-            <div class="input-wrap">
-              <span class="ms input-icon">mail</span>
-              <input type="email" class="field-input" placeholder="m.chen@student.edu"/>
-            </div>
-          </div>
-          <div class="field-wrap">
-            <label class="field-label">Phone Number <span class="optional-tag">Optional</span></label>
-            <div class="input-wrap">
-              <span class="ms input-icon">phone</span>
-              <input type="tel" class="field-input" placeholder="+880 1XXX-XXXXXX"/>
-            </div>
-          </div>
-        </div>
-
-        <!-- Row: Gender + Class -->
-        <div class="form-row">
-          <div class="field-wrap">
-            <label class="field-label">Gender <span class="req">*</span></label>
-            <div class="input-wrap select-wrap">
-              <span class="ms input-icon">wc</span>
-              <select class="field-input field-select" required>
-                <option value="" disabled selected>Select Gender</option>
-                <option value="male">Male</option>
-                <option value="female">Female</option>
-                <option value="other">Other</option>
-              </select>
-              <span class="ms select-arrow">expand_more</span>
-            </div>
-          </div>
-          <div class="field-wrap">
-            <label class="field-label">Class <span class="req">*</span></label>
-            <div class="input-wrap select-wrap">
-              <span class="ms input-icon">class</span>
-              <select class="field-input field-select" required>
-                <option value="" disabled selected>Select Class</option>
-                <option value="6">Class 6</option>
-                <option value="7">Class 7</option>
-                <option value="8">Class 8</option>
-                <option value="9">Class 9</option>
-                <option value="10">Class 10</option>
-                <option value="ssc">SSC</option>
-              </select>
-              <span class="ms select-arrow">expand_more</span>
-            </div>
-          </div>
-        </div>
-
-        <!-- Row: Section + Roll -->
-        <div class="form-row">
-          <div class="field-wrap">
-            <label class="field-label">Section <span class="req">*</span></label>
-            <div class="input-wrap select-wrap">
-              <span class="ms input-icon">table_chart</span>
-              <select class="field-input field-select" required>
-                <option value="" disabled selected>Select Section</option>
-                <option value="a">Section A</option>
-                <option value="b">Section B</option>
-                <option value="c">Section C</option>
-              </select>
-              <span class="ms select-arrow">expand_more</span>
-            </div>
-          </div>
-          <div class="field-wrap">
-            <label class="field-label">Roll <span class="req">*</span></label>
-            <div class="input-wrap">
-              <span class="ms input-icon">format_list_numbered</span>
-              <input type="number" class="field-input" placeholder="Enter Roll Number" min="1" required/>
-            </div>
-          </div>
-        </div>
-
-        <!-- Row: Password + Confirm Password -->
-        <div class="form-row">
-          <div class="field-wrap">
-            <label class="field-label">Password <span class="req">*</span></label>
-            <div class="input-wrap">
-              <span class="ms input-icon">lock</span>
-              <input type="password" class="field-input" id="password" placeholder="Set login password" required/>
-              <button type="button" class="eye-btn" onclick="togglePass('password', 'eye1')">
-                <span class="ms" id="eye1">visibility</span>
-              </button>
-            </div>
-          </div>
-          <div class="field-wrap">
-            <label class="field-label">Confirm Password <span class="req">*</span></label>
-            <div class="input-wrap">
-              <span class="ms input-icon">lock_reset</span>
-              <input type="password" class="field-input" id="confirm-password" placeholder="Re-enter password" required/>
-              <button type="button" class="eye-btn" onclick="togglePass('confirm-password', 'eye2')">
-                <span class="ms" id="eye2">visibility</span>
+            <div>
+              <button class="btn btn-primary" id="process-csv-btn" style="width:100%; height:2.5rem; font-size:0.75rem">
+                <span class="material-symbols-outlined" style="font-size:0.875rem">sync</span>Upload and Process
               </button>
             </div>
           </div>
         </div>
 
-        <!-- Action buttons -->
-        <div class="form-actions">
-          <button type="button" class="btn-pdf" onclick="downloadPDF()">
-            <span class="ms">download</span>
-            Download Enrollment PDF
-          </button>
-          <button type="submit" class="btn-enroll">
-            <span class="ms">person_add</span>
-            Enroll Student
-          </button>
+        <!-- OR Divider -->
+        <div class="or-divider">
+          <div class="or-divider-line"><div></div></div>
+          <div class="or-divider-text"><span>Or Add Manually</span></div>
         </div>
 
-      </form>
+        <!-- MANUAL ENROLLMENT FORM -->
+        <div class="manual-form-wrap">
+          <div class="manual-form-header">
+            <h4 style="font-size:0.875rem; font-weight:700; color:var(--on-surface)">Manual Enrollment</h4>
+            <p style="font-size:10px; color:#ef4444; font-style:italic">* Required fields</p>
+          </div>
 
-      <!-- Footer -->
-      <div class="page-footer">
-        Developed by <strong>নিপাতনে সিদ্ধ Softwares</strong>
+          <form id="add-student-form" novalidate class="manual-form-grid">
+
+            <!-- Left Column -->
+            <div class="form-col">
+              <label>
+                <span>Full Name <span class="req-star">*</span></span>
+                <input id="student-name" placeholder="e.g. Michael Chen" type="text">
+                <span class="field-error" id="err-student-name">Full name is required.</span>
+              </label>
+
+              <label>
+                <span>Student Email <span class="opt-badge">Optional</span></span>
+                <input id="student-email" placeholder="m.chen@student.edu" type="email">
+                <span class="field-error" id="err-student-email">Invalid email format.</span>
+              </label>
+
+              <label>
+                <span>Student ID <span class="req-star">*</span></span>
+                <input id="student-id" placeholder="100001" type="text">
+                <span class="field-error" id="err-student-id">Student ID is required.</span>
+              </label>
+
+              <label>
+                <span>Gender <span class="req-star">*</span></span>
+                <select id="student-gender">
+                  <option value="">Select Gender</option>
+                  <option>Male</option>
+                  <option>Female</option>
+                  <option>Other</option>
+                </select>
+                <span class="field-error" id="err-student-gender">Please select a gender.</span>
+              </label>
+
+              <label>
+                <span>Password <span class="req-star">*</span></span>
+                <div class="pw-wrap">
+                  <input id="student-password" placeholder="Set login password" type="password">
+                  <button type="button" class="pw-toggle" onclick="togglePassword('student-password',this)" tabindex="-1">
+                    <span class="material-symbols-outlined" style="font-size:18px">visibility</span>
+                  </button>
+                </div>
+                <span class="field-error" id="err-student-password">Password is required.</span>
+              </label>
+            </div>
+
+            <!-- Right Column -->
+            <div class="form-col">
+              <label>
+                <span>Class <span class="req-star">*</span></span>
+                <select id="student-class">
+                  <option value="">Select Class</option>
+                  <option>Class 6</option>
+                  <option>Class 7</option>
+                  <option>Class 8</option>
+                  <option>Class 9</option>
+                  <option>Class 10</option>
+                </select>
+                <span class="field-error" id="err-student-class">Please select a class.</span>
+              </label>
+
+              <label>
+                <span>Section <span class="req-star">*</span></span>
+                <select id="student-section">
+                  <option value="">Select Section</option>
+                  <option>Section A</option>
+                  <option>Section B</option>
+                  <option>Section C</option>
+                  <option>Section D</option>
+                </select>
+                <span class="field-error" id="err-student-section">Please select a section.</span>
+              </label>
+
+              <label>
+                <span>Roll Number <span class="req-star">*</span></span>
+                <input id="student-roll" placeholder="Enter Roll Number" type="text">
+                <span class="field-error" id="err-student-roll">Roll number is required.</span>
+              </label>
+
+              <label>
+                <span>Phone Number <span class="opt-badge">Optional</span></span>
+                <input id="student-phone" placeholder="+880 1XXX-XXXXXX" type="tel">
+              </label>
+
+              <label>
+                <span>Confirm Password <span class="req-star">*</span></span>
+                <div class="pw-wrap">
+                  <input id="student-confirm-password" placeholder="Re-enter password" type="password">
+                  <button type="button" class="pw-toggle" onclick="togglePassword('student-confirm-password',this)" tabindex="-1">
+                    <span class="material-symbols-outlined" style="font-size:18px">visibility</span>
+                  </button>
+                </div>
+                <span class="field-error" id="err-student-confirm-password">Passwords do not match.</span>
+              </label>
+
+              <label>
+                <span>Profile Photo <span class="opt-badge">Optional</span></span>
+                <input class="hidden" id="student-photo" type="file" accept="image/*">
+                <button type="button" class="photo-btn" onclick="document.getElementById('student-photo').click()">
+                  <span class="material-symbols-outlined" style="font-size:0.875rem">photo_camera</span>
+                  <span>Choose Photo</span>
+                </button>
+                <div id="student-photo-name" class="photo-name"></div>
+              </label>
+            </div>
+
+            <!-- Action Row (spans both columns) -->
+            <div class="form-action-row">
+              <button type="button" onclick="generateStudentPDF()" class="btn btn-secondary">
+                <span class="material-symbols-outlined" style="font-size:0.875rem">download</span>Download Enrolment PDF
+              </button>
+              <button class="btn btn-primary" id="submit-btn" type="submit">
+                <span id="submit-spinner" class="hidden spinner"></span>
+                <span id="submit-text">Enroll Student</span>
+              </button>
+            </div>
+
+          </form>
+        </div>
+
       </div>
-
-    </main>
+    </div>
   </div>
 
-  <!-- BOTTOM NAV (mobile) -->
-  <nav class="bottom-nav">
-    <button class="bn-item" onclick="setActive(this); window.location.href='index.html'">
-      <span class="ms">dashboard</span>Home
-    </button>
-    <button class="bn-item" onclick="setActive(this)">
-      <span class="ms">menu_book</span>Syllabus
-    </button>
-    <button class="bn-item" onclick="setActive(this)">
-      <span class="ms">manage_accounts</span>Roles
-    </button>
-    <button class="bn-item active" onclick="setActive(this)">
-      <span class="ms">group_add</span>Students
-    </button>
-    <button class="bn-item" onclick="setActive(this)">
-      <span class="ms">person_add</span>Teachers
-    </button>
-  </nav>
-
-
-  <script src="js/add-student.js"></script>
+  <!-- App Script -->
+  <script src="app.js"></script>
 </body>
 </html>
