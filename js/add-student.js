@@ -241,7 +241,7 @@
     y += 3;
     centerText('NIRIKKHA ADMIN SYSTEM', 14, 'bold');
     y += 3;
-    centerText('STUDENT ENROLMENT RECEIPT', 10, 'normal');
+    centerText('STUDENT ENROLMENT DETAILS', 10, 'normal');
     y += 5;
     divider('=');
     y += 3;
